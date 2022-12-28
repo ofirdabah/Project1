@@ -99,6 +99,7 @@ void Facebook::create_friendship(string name, string name2)
 	(*it)->create_friendship(*it2);
 	(*it2)->create_friendship(*it);
 	
+	
 }
 
 void Facebook::cancel_friendsship(string name, string name2)
@@ -139,10 +140,7 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 
 	(*it)->add_fan_page((*it2));
 	(*it2)->add_fan((*it));
-	/*if (*(*it) > *(*it2))
-		cout << "user as more folower" << endl;
-	else
-		cout << "fan page as more folower" << endl;*/
+	
 }
 
 void Facebook::remove_fan_from_page(string fan_name, string page_name)
