@@ -2,22 +2,14 @@
 
 void Date::setday(int d)throw (Datexception)
 {
-	if ((d < 1) || (d > 31))
-		throw Datexception("Invalid day");
 	day = d;
- 
- 
 }
 void Date::setmonth(int m)throw (Datexception)
 {
-	if ((m < 1) || (m > 12))
-		throw Datexception("Invalid month");
 	month = m;
 }
 void Date::setyear(int y) throw (Datexception)
 {
-	if ((y < 1900) || (y > 2022))
-		throw Datexception("Invalid year");
 	year = y;
 }
 
@@ -25,7 +17,13 @@ void Date::setyear(int y) throw (Datexception)
 
 Date::Date(int day, int month, int year) 
 {
-		this->setday(day);
-		this->setmonth(month);
-		this->setyear(year);
+    if (day < 1 || day > 31)
+        throw Datexception("Invalid day");
+    if (month < 1 || month > 12)
+        throw Datexception("Invalid month");
+    if (year < 1900 || year > 2100)
+        throw Datexception("Invalid year");
+    this->day = day;
+    this->month = month;
+    this->year = year;
 }
