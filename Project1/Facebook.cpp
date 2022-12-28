@@ -129,12 +129,12 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 
 	for (; it != all_users.end(); ++it)
 	{
-		if ((*it)->getName() == name)
+		if ((*it)->getName() == name2)
 			break;
 	}
 	for (; it2 != all_fans_page.end(); ++it2)
 	{
-		if ((*it2)->get_page_name() == name2)
+		if ((*it2)->get_page_name() == name)
 			break;
 	}
 
