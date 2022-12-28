@@ -130,7 +130,7 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 		if ((*it)->getName() == name)
 			break;
 	}
-	for (; it2 != all_fans_page.end(); ++it)
+	for (; it2 != all_fans_page.end(); ++it2)
 	{
 		if ((*it2)->get_page_name() == name2)
 			break;
