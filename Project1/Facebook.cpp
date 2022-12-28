@@ -84,7 +84,7 @@ void Facebook::create_friendship(string name, string name2)
 	auto it = all_users.begin();
 	auto it2 = all_users.begin();
 
-	for ( ; it != all_users.end(); ++it)
+	for (; it != all_users.end(); ++it)
 	{
 		if ((*it)->getName() == name)
 			break;
@@ -98,6 +98,7 @@ void Facebook::create_friendship(string name, string name2)
 	
 	(*it)->create_friendship(*it2);
 	(*it2)->create_friendship(*it);
+	
 }
 
 void Facebook::cancel_friendsship(string name, string name2)
