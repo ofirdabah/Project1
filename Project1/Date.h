@@ -13,7 +13,7 @@ private:
 public:
 	Datexception(const string& message) : message(message) {}
 
-	virtual const char* what() const throw()
+	const char* what() const
 	{
 		return message.c_str();
 	}

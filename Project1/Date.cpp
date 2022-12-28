@@ -5,8 +5,6 @@ void Date::setday(int d)throw (Datexception)
 	if ((d < 1) || (d > 31))
 		throw Datexception("Invalid day");
 	day = d;
- 
- 
 }
 void Date::setmonth(int m)throw (Datexception)
 {
