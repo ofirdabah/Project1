@@ -128,21 +128,21 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 
 	for (; it != all_users.end(); ++it)
 	{
-		if ((*it)->getName() == name)
+		if ((*it)->getName() == name2)
 			break;
 	}
 	for (; it2 != all_fans_page.end(); ++it2)
 	{
-		if ((*it2)->get_page_name() == name2)
+		if ((*it2)->get_page_name() == name)
 			break;
 	}
 
 	(*it)->add_fan_page((*it2));
 	(*it2)->add_fan((*it));
-	/*if (*(*it) > *(*it2))
+	if (*(*it) > *(*it2))
 		cout << "user as more folower" << endl;
 	else
-		cout << "fan page as more folower" << endl;*/
+		cout << "fan page as more folower" << endl;
 }
 
 void Facebook::remove_fan_from_page(string fan_name, string page_name)
