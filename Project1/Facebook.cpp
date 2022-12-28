@@ -15,8 +15,9 @@ Facebook::~Facebook() {
 
 void Facebook::add_user(const string s, int d, int m, int y)
 {
-
 	Date birth = Date(d, m, y);
+	if (IsUserExist(s));
+		/*throw();*/
 	User* new_user = new User(s, birth);
 	all_users.push_back(new_user);
 
@@ -196,6 +197,24 @@ void Facebook::print_all_followers(string name, int num)
 				(*it)->print_all_my_folowers();
 		}
 	}
-
 }
 
+bool Facebook::IsUserExist(string u_name)
+{
+	for (auto it = all_users.begin(); it != all_users.end(); ++it)
+	{
+		if ((*it)->getName() == u_name)
+			return true;
+	}
+	return false;
+}
+
+bool Facebook::IsFanPageExist(string f_name)
+{
+	for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
+	{
+		if ((*it)->get_page_name() == f_name)
+			return true;
+	}
+	return false;
+}
