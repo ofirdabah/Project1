@@ -7,6 +7,13 @@
 
 class Fans_page;
 
+
+class  Userexception : public exception
+{
+
+};
+
+
 class User {
 private:
 

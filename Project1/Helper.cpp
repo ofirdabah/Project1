@@ -7,18 +7,17 @@ void Helper::console(Facebook& meta)
 	try
 	{
 		meta.add_user("ofir", 24, 5, 1999);
-		meta.add_user("itay", 44, 2, 1996);
+		meta.add_user("itay", 3, 2, 1996);
 		meta.add_user("ori", 22, 5, 1994);
 		meta.add_fanPage("Spain");
 		meta.add_fanPage("Brazil");
 		meta.add_fanPage("Israel");
 	}
-	catch (DateException& e)
+	catch (Datexception& e)
 	{
-		cout << "Invalid data try again!\n";
+		 cout << e.what() << std::endl;
 	}
 	
-
 	int num;
 	do
 	{
@@ -53,6 +52,7 @@ void Helper::manage(int num, Facebook& meta)
 	switch (num)
 	{
 	case (int)USER_OPTION::ADD_USER:
+		
 		cout << "Welcome new user please sign up:\n";
 		cout << "Please enter name:" << endl;
 		cleanBuffer();
@@ -60,6 +60,7 @@ void Helper::manage(int num, Facebook& meta)
 		cout << "Please enter birthday (d/m/y):" << endl;
 		cin >> d >> m >> y;
 		meta.add_user(name, d, m, y);
+		
 		break;
 	case (int)USER_OPTION::ADD_FANPAGE:
 		cout << "Please enter name:" << endl;
@@ -136,6 +137,7 @@ void Helper::manage(int num, Facebook& meta)
 	case (int)USER_OPTION::SHOW_ALL_USERS:
 		meta.print_all_users_and_pages();
 		break;
+
 	case (int)USER_OPTION::SHOW_ALL_FOLLOWERS:
 		do
 		{

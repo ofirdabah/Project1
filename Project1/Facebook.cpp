@@ -15,9 +15,11 @@ Facebook::~Facebook() {
 
 void Facebook::add_user(const string s, int d, int m, int y)
 {
+
 	Date birth = Date(d, m, y);
 	User* new_user = new User(s, birth);
 	all_users.push_back(new_user);
+
 }
 
 void Facebook::add_fanPage(const string page_name)

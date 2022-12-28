@@ -1,23 +1,23 @@
 #include "Date.h"
 
-void Date::setday(int d)throw (DayRange)
+void Date::setday(int d)throw (Datexception)
 {
 	if ((d < 1) || (d > 31))
-		throw DayRange();
+		throw Datexception("Invalid day");
 	day = d;
  
  
 }
-void Date::setmonth(int m)throw (MonthRange)
+void Date::setmonth(int m)throw (Datexception)
 {
 	if ((m < 1) || (m > 12))
-		throw MonthRange();
+		throw Datexception("Invalid month");
 	month = m;
 }
-void Date::setyear(int y) throw (YearRange)
+void Date::setyear(int y) throw (Datexception)
 {
 	if ((y < 1900) || (y > 2022))
-		throw YearRange();
+		throw Datexception("Invalid year");
 	year = y;
 }
 

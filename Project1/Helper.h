@@ -2,6 +2,21 @@
 #define HELPER_H
 #include "Facebook.h"
 
+class Helperxception : public exception
+{
+private:
+	string message;
+
+public:
+	Helperxception(const string& message) : message(message) {}
+
+	virtual const char* what() const throw()
+	{
+		return message.c_str();
+	}
+};
+
+
 class Helper
 {
 private:

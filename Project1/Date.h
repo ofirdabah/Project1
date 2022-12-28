@@ -5,10 +5,19 @@
 
 using namespace std;
 
-class DateException : public exception{};
-class YearRange :public DateException {};
-class MonthRange :public DateException {};
-class DayRange :public DateException { public:DayRange() { cout << "Invalid day \n"; } };
+class Datexception : public exception
+{
+private:
+	string message;
+
+public:
+	Datexception(const string& message) : message(message) {}
+
+	const char* what() const throw()
+	{
+		return message.c_str();
+	}
+};
 
 class Date
 {
@@ -17,9 +26,9 @@ class Date
 	int year;
 
 public:
-	inline void setyear(int y)throw (YearRange);
-	inline void setmonth(int m)throw (MonthRange);
-	inline void setday(int d) throw (DayRange);
+	inline void setyear(int y)throw (Datexception);
+	inline void setmonth(int m)throw (Datexception);
+	inline void setday(int d) throw (Datexception);
 
 	inline const int getyear() const { return year; }
 	inline const int getmonth() const { return month; }
@@ -27,7 +36,7 @@ public:
 
 	void print() { cout << day << "/" << month << "/" << year; }
 	Date();
-	Date(int d, int m, int y);
+	Date(int day, int month, int year);
 
 };
 
