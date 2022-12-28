@@ -34,7 +34,7 @@ void Fans_page::remove_fan(User* newfan)
 	}
 }
 
-Fans_page& Fans_page:: operator+=(User& other) {
+Fans_page& Fans_page::operator+=(User& other) {
 	this->add_fan(&other);
 		return (*this);
 }

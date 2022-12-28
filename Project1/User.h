@@ -47,6 +47,7 @@ public:
 	void show_fanpage_followed_by_user();
 
     User& operator+=(User& other);
+	User& operator+=(Fans_page& other);
 
 	bool operator>(const User& other) const;
 	bool operator>(const Fans_page& other) const;

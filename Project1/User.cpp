@@ -81,9 +81,15 @@ void User::show_fanpage_followed_by_user()
 	cout << ":\n " << (*it)->get_page_name();
 }
 
-User& User:: operator+=(User& other) {
+User& User::operator+=(User& other) {
 
 	this->create_friendship(&other);
+	return (*this);
+}
+
+User& User::operator+=(Fans_page& other)
+{
+	this->add_fan_page(&other);
 	return (*this);
 }
 
