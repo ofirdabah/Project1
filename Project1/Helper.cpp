@@ -39,9 +39,8 @@ void Helper::print_main_page()
 	cout << (int)USER_OPTION::ADD_FUN << "  - Subscribe to fan page" << endl;
 	cout << (int)USER_OPTION::REMOVE_FUN << "  - Disubscribe a fan page" << endl;
 	cout << (int)USER_OPTION::SHOW_ALL_USERS << " - Show all users and fan page" << endl;
-	cout << (int)USER_OPTION::SHOW_ALL_FOLLOWERS << " - Show followers:" << endl;
+	cout << (int)USER_OPTION::SHOW_ALL_FOLLOWERS << " - Show followers" << endl;
 	cout << (int)USER_OPTION::EXIT << " - EXIT" << endl;
-
 }
 
 void Helper::manage(int num, Facebook& meta)
@@ -148,6 +147,7 @@ void Helper::manage(int num, Facebook& meta)
 		cleanBuffer();
 		cin >> name;
 		meta.print_all_followers(name, number);
+		cout << "\n";
 		break;
 	}
 }
