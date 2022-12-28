@@ -24,11 +24,11 @@ void User::print_all_status()
 
 void User::show_friends_status()
 {
-	for (auto i = friends_arr.begin(); i != friends_arr.end(); ++i)
-		for (auto j = (*i)->Status_arry.begin(); j != (*i)->Status_arry.end(); ++j) {
+	for (auto i = friends_arr.begin(); i != friends_arr.end(); ++i) {
 			cout<<"\n"<<(*i)->getName() << "'s status:\n";
+		for (auto j = (*i)->Status_arry.begin(); j != (*i)->Status_arry.end(); ++j)
 			(*j)->printStatus();
-		}
+	}
 }
 
 void User::create_friendship(User* newfriend)
