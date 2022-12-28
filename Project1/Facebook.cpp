@@ -111,7 +111,7 @@ void Facebook::cancel_friendsship(string name, string name2)
 		if ((*it)->getName() == name)
 			break;
 	}
-	for (; it2 != all_users.end(); ++it)
+	for (; it2 != all_users.end(); ++it2)
 	{
 		if ((*it2)->getName() == name2)
 			break;
@@ -139,10 +139,6 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 
 	(*it)->add_fan_page((*it2));
 	(*it2)->add_fan((*it));
-	if (*(*it) > *(*it2))
-		cout << "user as more folower" << endl;
-	else
-		cout << "fan page as more folower" << endl;
 }
 
 void Facebook::remove_fan_from_page(string fan_name, string page_name)
@@ -155,7 +151,7 @@ void Facebook::remove_fan_from_page(string fan_name, string page_name)
 		if ((*it)->getName() == fan_name)
 			break;
 	}
-	for (; it2 != all_fans_page.end(); ++it)
+	for (; it2 != all_fans_page.end(); ++it2)
 	{
 		if ((*it2)->get_page_name() == page_name)
 			break;

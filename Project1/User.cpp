@@ -55,8 +55,12 @@ void User::cancel_friendship(string friend_not_for_long)
 	int delete_index = 0;
 	for (auto it = friends_arr.begin() ; it != friends_arr.end(); ++it)
 	{
-		if (name == friend_not_for_long)
+		if ((*it)->getName() == friend_not_for_long)
+		{
 			friends_arr.erase(it);
+			break;
+		}
+			
 	}
 }
 
