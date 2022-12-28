@@ -78,7 +78,6 @@ void Helper::manage(int num, Facebook& meta)
 		cleanBuffer();
 		getline(cin, name);
 		cout << "Please enter the status:" << endl;
-		cleanBuffer();
 		getline(cin, status);
 		if (number == 1)
 			meta.add_status_to_user(name, status);
@@ -146,8 +145,8 @@ void Helper::manage(int num, Facebook& meta)
 		} while ((checkIfOneOrZero(number) == false));
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
 		getline(cin, name);
+		cout << "\n" << name << "'s followers:\n";
 		meta.print_all_followers(name, number);
 		cout << "\n";
 		break;
