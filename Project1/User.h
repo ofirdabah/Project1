@@ -43,7 +43,7 @@ public:
 	User(const string s, Date& date);
 	~User();
 	void add_fan_page(Fans_page* newpage);
-	void  remove_fan_page(Fans_page* page);
+	void  remove_fan_page(string page_name);
 	void show_fanpage_followed_by_user();
 
     User& operator+=(User& other);

@@ -23,7 +23,14 @@ void Helper::console(Facebook& meta)
 	{
 		print_main_page();
 		cin >> num;
-		manage(num, meta);
+		try
+		{
+			manage(num, meta);
+		}
+		catch(string)
+		{
+
+		}
 	} while (num != NUM_OF_FUNCTION);
 }
 

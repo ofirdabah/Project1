@@ -25,12 +25,15 @@ Fans_page::~Fans_page() {
 		delete* i;
 }
 
-void Fans_page::remove_fan(User* newfan)
+void Fans_page::remove_fan(string fan_name)
 {
 	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)
 	{
-		if ((*it)->getName()==newfan->getName())
-	     fans_arr.erase(it);
+		if ((*it)->getName() == fan_name)
+		{
+			fans_arr.erase(it);
+			break;
+		}
 	}
 }
 

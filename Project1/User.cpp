@@ -71,12 +71,15 @@ void User::add_fan_page(Fans_page* newpage)
 	fan_pages_arr.push_back(newpage);
 }
 
-void User::remove_fan_page(Fans_page* page)
+void User::remove_fan_page(string page_name)
 {
-	for (auto it = fan_pages_arr.begin(); it != fan_pages_arr.end(); it++)
+	for (auto it = fan_pages_arr.begin(); it != fan_pages_arr.end(); ++it)
 	{
-		if ((*it)->get_page_name() == page->get_page_name())
+		if ((*it)->get_page_name() == page_name)
+		{
 			fan_pages_arr.erase(it);
+			break;
+		}	
 	}
 }
 

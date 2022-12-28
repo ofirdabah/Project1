@@ -25,7 +25,7 @@ public:
 	void print_all_status();
 	void print_all_my_folowers();
 	void add_fan( User* newfan);
-	void remove_fan(User* newfan);
+	void remove_fan(string fan_name);
 	vector<Status*> getStatus_of_page() { return status_of_page; }
     vector<Status*> getStatus_of_page() const  { return status_of_page; }  
 	Fans_page& operator+=(User& other);

@@ -159,8 +159,11 @@ void Facebook::remove_fan_from_page(string fan_name, string page_name)
 			break;
 	}
 
-	(*it)->get_fan_pages_arr().erase(it2);
-	(*it2)->get_fans_arr().erase(it);
+	if (it != all_users.end() && it2 != all_fans_page.end())
+	{
+		(*it)->remove_fan_page(page_name);
+		(*it2)->remove_fan(fan_name);
+	}
 }
 
 void Facebook::print_all_users_and_pages()
