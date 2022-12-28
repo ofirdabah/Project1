@@ -55,7 +55,7 @@ void Helper::manage(int num, Facebook& meta)
 		cout << "Welcome new user please sign up:\n";
 		cout << "Please enter name:" << endl;
 		cleanBuffer();
-		cin>>name;
+		getline(cin, name);
 		cout << "Please enter birthday (d/m/y):" << endl;
 		cin >> d >> m >> y;
 		meta.add_user(name, d, m, y);
@@ -64,7 +64,7 @@ void Helper::manage(int num, Facebook& meta)
 	case (int)USER_OPTION::ADD_FANPAGE:
 		cout << "Please enter name:" << endl;
 		cleanBuffer();
-		cin >> name_of_fan_page;
+		getline(cin, name_of_fan_page);
 		meta.add_fanPage(name_of_fan_page);
 		break;
 	case (int)USER_OPTION::ADD_STATUS:
@@ -76,9 +76,10 @@ void Helper::manage(int num, Facebook& meta)
 
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		cout << "Please enter the status:" << endl;
-		cin >> status;
+		cleanBuffer();
+		getline(cin, status);
 		if (number == 1)
 			meta.add_status_to_user(name, status);
 		else
@@ -92,45 +93,45 @@ void Helper::manage(int num, Facebook& meta)
 		} while ((checkIfOneOrZero(number) == false));
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		meta.show_all_status(name, number);
 		break;
 	case (int)USER_OPTION::SHOW_10_RECENT_STATUS:
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		meta.show_all_friends_status(name);
 		break;
 	case (int)USER_OPTION::CREATE_FRIENDSHIP:
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		cout << "Please enter the secened name:" << endl;
-		cin >> name2;
+		getline(cin, name2);
 		meta.create_friendship(name, name2);
 		break;
 	case (int)USER_OPTION::CANCLE_FRIENDSHIP:
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		cout << "Please enter the secened name:" << endl;
-		cin >> name2;
+		getline(cin, name2);
 		meta.cancel_friendsship(name, name2);
 		break;
 	case (int)USER_OPTION::ADD_FUN:
 		cout << "Please enter the name of the page:" << endl;
 		cleanBuffer();
-		cin >> name_of_fan_page;
+		getline(cin, name_of_fan_page);
 		cout << "Please enter the name of the friend you want to add:" << endl;
-		cin >> name;
+		getline(cin, name);
 		meta.add_fan_to_fanPage(name_of_fan_page, name);
 		break;
 	case (int)USER_OPTION::REMOVE_FUN:
 		cout << "Please enter the name of the friend you want to remove:" << endl;
 		cleanBuffer();
-		cin >> name;
+		getline(cin, name);
 		cout << "Please enter the name of the page:" << endl;
-		cin >> name_of_fan_page;
+		getline(cin, name_of_fan_page);
 		meta.remove_fan_from_page(name, name_of_fan_page);
 		break;
 	case (int)USER_OPTION::SHOW_ALL_USERS:
@@ -146,6 +147,7 @@ void Helper::manage(int num, Facebook& meta)
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
 		cin >> name;
+		getline(cin, name);
 		meta.print_all_followers(name, number);
 		cout << "\n";
 		break;
