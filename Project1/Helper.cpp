@@ -41,7 +41,7 @@ void Helper::print_main_page()
 	cout << (int)USER_OPTION::ADD_STATUS << "  - Add new status" << endl;
 	cout << (int)USER_OPTION::SHOW_ALL_STATUS << "  - Show all status" << endl;
 	cout << (int)USER_OPTION::SHOW_10_RECENT_STATUS << "  - Show 10 recent status of all my friends" << endl;
-	cout << (int)USER_OPTION::CREATE_FRIENDSHIP << "  - Add new friendship" << endl;
+	cout << (int)USER_OPTION::CREATE_FRIENDSHIP << "  - Create new friendship" << endl;
 	cout << (int)USER_OPTION::CANCLE_FRIENDSHIP << "  - Delete friendship" << endl;
 	cout << (int)USER_OPTION::ADD_FUN << "  - Subscribe to fan page" << endl;
 	cout << (int)USER_OPTION::REMOVE_FUN << "  - Disubscribe a fan page" << endl;
