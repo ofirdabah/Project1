@@ -217,11 +217,11 @@ void Facebook::print_all_users_and_pages()
 
 void Facebook::print_all_followers(string name, int num)
 {
-	if (!IsUserExist(fan_name))
-		throw UserNotExistexception(fan_name);
+	if (!IsUserExist(name))
+		throw UserNotExistexception(name);
 
-	if (!IsFanPageExist(page_name))
-		throw FanPageNotExistexception(page_name);
+	if (!IsFanPageExist(name))
+		throw FanPageNotExistexception(name);
 
 	if (num == 1)
 	{
