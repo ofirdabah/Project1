@@ -1,8 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Facebook.h"
 #include <cstring>
-#define DIF_SIZE 4
-
 
 Facebook::Facebook() {}
 

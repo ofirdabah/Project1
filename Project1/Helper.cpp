@@ -28,8 +28,6 @@ void Helper::console(Facebook& meta)
 		meta.add_status_to_fan_page("Spain", "we love omer adam and sangria");
 		meta.add_status_to_fan_page("Spain", "we will win");
 
-
-
 		int num;
 		string str;
 
