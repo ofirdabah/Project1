@@ -11,6 +11,12 @@ class Fans_page;
 class Userexception : public exception
 {
 public:
+	virtual const char* what() const override { return "Data invalid!\n"; }
+};
+
+class UserNamexception : public Userexception
+{
+public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
 
