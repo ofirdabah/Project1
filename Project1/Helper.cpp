@@ -2,11 +2,24 @@
 #include <iostream>  
 #define NUM_OF_FUNCTION 12
 
-bool is_number(const std::string& s)
+bool is_number(const string& s)
 {
 	std::string::const_iterator it = s.begin();
 	while (it != s.end() && std::isdigit(*it)) ++it;
 	return !s.empty() && it == s.end();
+}
+
+int ValidNumber(const string number) 
+{
+	int num;
+	if (is_number(number))
+	{
+		num = stoi(number);
+		if (num < 13 && num > 0)
+			return num;
+	}
+		throw Helperexception();
+
 }
 
 void Helper::console(Facebook& meta)
@@ -19,41 +32,22 @@ void Helper::console(Facebook& meta)
 		meta.add_fanPage("Brazil");
 		meta.add_fanPage("Israel");
 	
+
 		int num;
 		string str;
-		bool flag = false;
 
-
-			
 	do
 	{
-		print_main_page();
-		do
-		{
-		cin >> str;
-		if (is_number(str))
-		{
-			num = stoi(str);
-			if (num < 13 && num > 0)
-				flag = true;
-			else
-			{
-				cout << "Invalid data.Enter only number  between 1-12, try again\n";
-			}
-		}
-		else {
-
-		cout << "Invalid data.Enter only number  between 1-12, try again\n";
-		cleanBuffer();
-		print_main_page();
-		}
-
-		} while (flag!= true);
 		try
 		{
+			num = 0;
+			print_main_page();
+			cin >> str;
+			num = ValidNumber(str);
 			manage(num, meta);
 		}
-		catch (exception& e) {
+		catch (exception& e) 
+		{
 			cout << e.what() << endl;
 		}
 	} while (num != NUM_OF_FUNCTION);
