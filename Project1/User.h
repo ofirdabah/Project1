@@ -11,10 +11,38 @@ class Fans_page;
 class Userexception : public exception
 {
 public:
+	virtual const char* what() const override { return "Data invalid!\n"; }
+};
+
+class UserNamexception : public Userexception
+{
+public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
 
+class UserFriendexception : public exception
+{
+public:
+	virtual const char* what() const override { return "Already friends!\n"; }
+};
 
+class UserNotFriendexception : public exception
+{
+public:
+	virtual const char* what() const override { return "You are not friends!\n"; }
+};
+
+class UserALreadyFollowexception : public exception
+{
+public:
+	virtual const char* what() const override { return "You are already follow this page!\n"; }
+};
+
+class UserNotFollowexception : public exception
+{
+public:
+	virtual const char* what() const override { return "You are not follow this page!\n"; }
+};
 
 class User {
 private:
