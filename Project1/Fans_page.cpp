@@ -20,7 +20,7 @@ void Fans_page::print_all_status()
 void Fans_page::print_all_my_folowers()
 {
 	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)
-		cout<<(*it)->getName();
+		cout<<(*it)->getName()<<"\n";
 }
 
 void Fans_page::add_fan(User* newfan)

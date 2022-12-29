@@ -23,6 +23,12 @@ public:
 	virtual const char* what() const override { return "Fan page name is already exist,Try again please!\n"; }
 };
 
+class friendofyourselfExistexception : public Facebookexception
+{
+public:
+	virtual const char* what() const override { return "We belive that evreyone can be friend with himself but not in this website!,please try again!!\n"; }
+};
+
 class UserNotExistexception : public Facebookexception
 {
 	string name;

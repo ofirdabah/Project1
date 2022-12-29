@@ -95,6 +95,10 @@ void Facebook::show_all_friends_status(string name) {
 
 void Facebook::create_friendship(string name, string name2)
 {
+
+	if (name == name2)
+		throw friendofyourselfExistexception();
+
 	if (!IsUserExist(name))
 		throw UserNotExistexception(name);
 
@@ -225,6 +229,7 @@ void Facebook::print_all_followers(string name, int num)
 		{
 			if ((*it)->getName() == name)
 				(*it)->print_all_of_my_folowers();
+
 		}
 	}
 	else

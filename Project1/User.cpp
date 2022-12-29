@@ -49,7 +49,8 @@ void User::create_friendship(User* newfriend)
 void User::print_all_of_my_folowers()
 {
 	for (auto it = friends_arr.begin(); it != friends_arr.end(); ++it)
-		cout<<(*it)->getName();
+		cout<<(*it)->getName()<<"\n";
+
 }
 
 void User::cancel_friendship(string friend_not_for_long)

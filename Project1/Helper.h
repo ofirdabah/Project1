@@ -38,48 +38,14 @@ public:
 		} while (x != EOF && x != '\n');
 	}
 
-	bool checkIfOneOrZero(int num)
-	{
-		if (num != 1 && num != 2)
-			return false;
-
-		return true;
-	}
+	bool checkIfOneOrZero(int num);
+	bool is_number(const string& s);
+	int ValidNumber(const string number);
+	
 };
 
 
-//class StringToIntError : public std::exception
-//{
-//private:
-//	std::string message;
-//
-//public:
-//	StringToIntError(const std::string& message) : message(message) {}
-//
-//	const char* what() const throw()
-//	{
-//		return message.c_str();
-//	}
-//};
 
-//int string_to_int(const std::string& s)
-//{
-//	try
-//	{
-//		int i = std::stoi(s);
-//		if (i < 1 || i > 12)
-//			throw StringToIntError("Invalid integer");
-//		return i;
-//	}
-//	catch (const std::invalid_argument&)
-//	{
-//		throw StringToIntError("Invalid string");
-//	}
-//	catch (const std::out_of_range&)
-//	{
-//		throw StringToIntError("Invalid integer");
-//	}
-//}
 
 
 
