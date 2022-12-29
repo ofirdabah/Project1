@@ -2,6 +2,12 @@
 #include <iostream>  
 #define NUM_OF_FUNCTION 12
 
+bool is_number(const std::string& s)
+{
+	std::string::const_iterator it = s.begin();
+	while (it != s.end() && std::isdigit(*it)) ++it;
+	return !s.empty() && it == s.end();
+}
 void Helper::console(Facebook& meta)
 {
 	
@@ -12,12 +18,36 @@ void Helper::console(Facebook& meta)
 		meta.add_fanPage("Brazil");
 		meta.add_fanPage("Israel");
 	
-	int num;
-	char c;
+		int num;
+		string str;
+		bool flag = false;
+
+
+			
 	do
 	{
 		print_main_page();
-		cin >> num;
+		do
+		{
+		cin >> str;
+		if (is_number(str))
+		{
+			num = stoi(str);
+			if (num < 13 && num > 0)
+				flag = true;
+			else
+			{
+				cout << "Invalid data.Enter only number  between 1-12, try again\n";
+			}
+		}
+		else {
+
+		cout << "Invalid data.Enter only number  between 1-12, try again\n";
+		cleanBuffer();
+		print_main_page();
+		}
+
+		} while (flag!= true);
 		try
 		{
 			manage(num, meta);
@@ -57,10 +87,9 @@ void Helper::manage(int num, Facebook& meta)
 		cout << "Please enter name:" << endl;
 		cleanBuffer();
 		getline(cin, name);
-		cout << "Please enter birthday (d/m/y):" << endl;
+		cout << "Please enter birthday (day month year(enter or space between)):" << endl;
 		cin >> d >> m >> y;
 		meta.add_user(name, d, m, y);
-		
 		break;
 	case (int)USER_OPTION::ADD_FANPAGE:
 		cout << "Please enter name:" << endl;
@@ -153,3 +182,5 @@ void Helper::manage(int num, Facebook& meta)
 		break;
 	}
 }
+
+

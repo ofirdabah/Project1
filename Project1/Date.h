@@ -14,20 +14,20 @@ public:
 class Yearexception : public Datexception
 {
 public:
-virtual const char* what() const override {return "Invalid year!\nTry again please\n";}
+virtual const char* what() const override {return "Invalid year,Try again please!\n";}
 };
 
 class Monthexception : public Datexception
 {
 public:
 
-	virtual const char* what() const override { return "Invalid month!\nTry again please\n"; }
+	virtual const char* what() const override { return "Invalid month,Try again please!\n"; }
 };
 
 class Dayexception : public Datexception
 {
 public:
-	virtual const char* what() const override { return "Invalid Day!\nTry again please\n"; }
+	virtual const char* what() const override { return "Invalid Day,Try again please!\n"; }
 };
 
 class Date
