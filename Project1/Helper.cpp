@@ -1,38 +1,35 @@
 #include"Helper.h"
 #include <iostream>  
-#define NUM_OF_FUNCTION 12
 
+int const NUM_OF_FUNCTION = 12;
 
 void Helper::console(Facebook& meta)
 {
-		meta.add_user("ofir", 24, 5, 1999);
-		meta.add_user("itay", 3, 2, 1996);
-		meta.add_user("ori", 22, 5, 1994);
-		meta.add_fanPage("Spain");
-		meta.add_fanPage("Brazil");
-		meta.add_fanPage("Israel");
-		meta.create_friendship("ofir", "itay");
-		meta.create_friendship("ofir", "ori");
-		meta.add_fan_to_fanPage("Israel", "ori");
-		meta.add_fan_to_fanPage("Brazil", "ori");
-		meta.add_status_to_user("ofir", "hello world");
-		meta.add_status_to_user("ofir", "hello world im football fan");
-		meta.add_status_to_user("itay", "hello");
-		meta.add_status_to_user("itay", "hello bye");
-		meta.add_status_to_user("ori", "i love kayle jenner");
-		meta.add_status_to_user("ori", "i love madona");
-		meta.add_status_to_fan_page("Brazil", "i love madona");
-		meta.add_status_to_fan_page("Brazil", "i love mardona,but pela more");
-		meta.add_status_to_fan_page("Israel", "we love 1970 ");
-		meta.add_status_to_fan_page("Israel", "we score");
-		meta.add_status_to_fan_page("Spain", "we love omer adam and sangria");
-		meta.add_status_to_fan_page("Spain", "we will win");
-
-
+	meta.add_user("ofir", 24, 5, 1999);
+	meta.add_user("itay", 3, 2, 1996);
+	meta.add_user("ori", 22, 5, 1994);
+	meta.add_fanPage("Spain");
+	meta.add_fanPage("Brazil");
+	meta.add_fanPage("Israel");
+	meta.create_friendship("ofir", "itay");
+	meta.create_friendship("ofir", "ori");
+	meta.add_fan_to_fanPage("Israel", "ori");
+	meta.add_fan_to_fanPage("Brazil", "ori");
+	meta.add_status_to_user("ofir", "hello world");
+	meta.add_status_to_user("ofir", "hello world im football fan");
+	meta.add_status_to_user("itay", "hello");
+	meta.add_status_to_user("itay", "hello bye");
+	meta.add_status_to_user("ori", "i love kayle jenner");
+	meta.add_status_to_user("ori", "i love madona");
+	meta.add_status_to_fan_page("Brazil", "i love madona");
+	meta.add_status_to_fan_page("Brazil", "i love mardona,but pela more");
+	meta.add_status_to_fan_page("Israel", "we love 1970 ");
+	meta.add_status_to_fan_page("Israel", "we score");
+	meta.add_status_to_fan_page("Spain", "we love omer adam and sangria");
+	meta.add_status_to_fan_page("Spain", "we will win");
 
 		int num;
 		string str;
-
 	do
 	{
 		try
