@@ -7,16 +7,27 @@ using namespace std;
 
 class Datexception : public exception
 {
-private:
-	string message;
-
 public:
-	Datexception(const string& message) : message(message) {}
+	virtual const char* what() const override { return "Invalid date!"; }
+};
 
-	const char* what() const
-	{
-		return message.c_str();
-	}
+class Yearexception : public Datexception
+{
+public:
+virtual const char* what() const override {return "Invalid year!\n";}
+};
+
+class Monthexception : public Datexception
+{
+public:
+
+	virtual const char* what() const override { return "Invalid month!\n"; }
+};
+
+class Dayexception : public Datexception
+{
+public:
+	virtual const char* what() const override { return "Invalid Day!\n"; }
 };
 
 class Date
@@ -26,9 +37,9 @@ class Date
 	int year;
 
 public:
-	inline void setyear(int y)throw (Datexception);
-	inline void setmonth(int m)throw (Datexception);
-	inline void setday(int d) throw (Datexception);
+	inline void setyear(int y) noexcept (false);
+	inline void setmonth(int m) noexcept (false);
+	inline void setday(int d) noexcept (false);
 
 	inline const int getyear() const { return year; }
 	inline const int getmonth() const { return month; }

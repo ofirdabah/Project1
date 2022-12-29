@@ -4,7 +4,7 @@
 
 void Helper::console(Facebook& meta)
 {
-
+	
 		meta.add_user("ofir", 24, 5, 1999);
 		meta.add_user("itay", 3, 2, 1996);
 		meta.add_user("ori", 22, 5, 1994);
@@ -12,26 +12,18 @@ void Helper::console(Facebook& meta)
 		meta.add_fanPage("Brazil");
 		meta.add_fanPage("Israel");
 	
-
 	int num;
 	char c;
 	do
 	{
 		print_main_page();
-		do
-		{
 		cin >> num;
-		if(num < 0 && num>13)
-			cout<<"Invalid input!";
-
-		} while (num <0&& num>13);
 		try
 		{
 			manage(num, meta);
 		}
-		catch(string)
-		{
-
+		catch (Datexception& e) {
+			cout << e.what() << endl;
 		}
 	} while (num != NUM_OF_FUNCTION);
 }

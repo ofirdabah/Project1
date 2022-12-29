@@ -17,14 +17,14 @@ void Date::setyear(int y)
 //------------------------------------------------//
 
 
-Date::Date(int day, int month, int year) throw (Datexception)
+Date::Date(int day, int month, int year) noexcept (false)
 {
     if (day < 1 || day > 31)
-        throw Datexception("Invalid day");
+        throw Dayexception();
     if (month < 1 || month > 12)
-        throw Datexception("Invalid month");
-    if (year < 1900 || year > 2100)
-        throw Datexception("Invalid year");
+        throw Monthexception();
+    if (year < 1900 || year > 2022)
+        throw Yearexception();
     this->day = day;
     this->month = month;
     this->year = year;
