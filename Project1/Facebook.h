@@ -5,6 +5,53 @@
 #include "Status.h"
 #include "User.h"
 
+class Facebookexception : public exception
+{
+public:
+	virtual const char* what() const override { return "Invalid data!"; }
+};
+
+class UserExistexception : public Facebookexception
+{
+public:
+	virtual const char* what() const override { return "User name is already exist,Try again please!\n"; }
+};
+
+class FanPageExistexception : public Facebookexception
+{
+public:
+	virtual const char* what() const override { return "Fan page name is already exist,Try again please!\n"; }
+};
+
+class UserNotExistexception : public Facebookexception
+{
+	string name;
+public:
+	UserNotExistexception(string n)
+	{
+		name = "User name: ";
+		name += n;
+		name += " is not exist, Try again please!\n";
+	}
+
+	virtual const char* what() const override { return name.c_str(); }
+};
+
+class FanPageNotExistexception : public Facebookexception
+{
+	string name;
+
+public:
+
+	FanPageNotExistexception(string n)
+	{
+		name = "Fan page name: ";
+		name += n;
+		name += " is not exist, Try again please!\n";
+	}
+
+	virtual const char* what() const override { return name.c_str();}
+};
 
 class Facebook {
 
