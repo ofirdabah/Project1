@@ -14,8 +14,6 @@ public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
 
-
-
 class User {
 private:
 
