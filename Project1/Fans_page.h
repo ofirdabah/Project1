@@ -6,6 +6,31 @@
 
 class User;
 
+class Fans_pagexception : public exception
+{
+public:
+	virtual const char* what() const override { return "Data invalid!\n"; }
+};
+
+class Emptynamexception : public Fans_pagexception
+{
+public:
+	virtual const char* what() const override { return "Empty name is invalid!\n"; }
+};
+
+class UserNoExistexception : public Fans_pagexception
+{
+public:
+	virtual const char* what() const override { return "User not exist!\n"; }
+};
+
+class UserAlreadyfollowexception : public Fans_pagexception
+{
+public:
+	virtual const char* what() const override { return "User already follow this page exist!\n"; }
+};
+
+
 class Fans_page
 {
 	string page_name;

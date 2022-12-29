@@ -20,6 +20,31 @@ public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
 
+
+class UserFriendexception : public Userexception
+{
+public:
+	virtual const char* what() const override { return "Already friends!\n"; }
+};
+
+class UserNotFriendexception : public Userexception
+{
+public:
+	virtual const char* what() const override { return "You are not friends!\n"; }
+};
+
+class UserALreadyFollowexception : public Userexception
+{
+public:
+	virtual const char* what() const override { return "You are already follow this page!\n"; }
+};
+
+class UserNotFollowexception : public Userexception
+{
+public:
+	virtual const char* what() const override { return "You are not follow this page!\n"; }
+};
+
 class User {
 private:
 
@@ -29,16 +54,16 @@ private:
 	vector<Status*> Status_arry;
 	vector<User*> friends_arr;
 	vector<Fans_page*> fan_pages_arr;
-	
+
 public:
 
 	User(const User& other) = delete;
-	
+
 	vector<Status*> get_status_arry() { return Status_arry; }
 	vector<User*> get_friends_arry() { return friends_arr; };
 	const string getName() const { return name; }
 	Date getdate() const { return birthdate; }
-	
+
 	vector<Fans_page*> get_fan_pages_arr() const { return fan_pages_arr; }
 	void show_friends_status();
 	void create_friendship(User* newfriend);
@@ -52,7 +77,7 @@ public:
 	void  remove_fan_page(string page_name);
 	void show_fanpage_followed_by_user();
 
-    User& operator+=(User& other);
+	User& operator+=(User& other);
 	User& operator+=(Fans_page& other);
 
 	bool operator>(const User& other) const;

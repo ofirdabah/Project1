@@ -2,7 +2,12 @@
 #include "User.h"
 
 
-Fans_page::Fans_page(string name) : page_name(name) {}
+Fans_page::Fans_page(string name) : page_name(name) {
+	name = name;
+	if (name == "")
+		throw Emptynamexception();
+}
+
 
 void Fans_page::add_status(Status* s) {status_of_page.push_back(s);}
 
@@ -18,7 +23,16 @@ void Fans_page::print_all_my_folowers()
 		cout<<(*it)->getName();
 }
 
-void Fans_page::add_fan(User* newfan) {fans_arr.push_back(newfan);}
+void Fans_page::add_fan(User* newfan)
+{
+	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)
+	{
+		if ((*it)->getName() == newfan->getName())
+			throw UserAlreadyfollowexception();
+	}
+	fans_arr.push_back(newfan);
+	
+}
 
 Fans_page::~Fans_page() {
 	for (auto i = status_of_page.begin(); i != status_of_page.end(); ++i)
@@ -27,14 +41,18 @@ Fans_page::~Fans_page() {
 
 void Fans_page::remove_fan(string fan_name)
 {
+	bool flag = false;
 	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)
 	{
 		if ((*it)->getName() == fan_name)
 		{
+			flag = true;
 			fans_arr.erase(it);
 			break;
 		}
 	}
+	if (!flag)
+		throw UserNoExistexception();
 }
 
 Fans_page& Fans_page::operator+=(User& other) {
