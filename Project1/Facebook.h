@@ -78,6 +78,7 @@ public:
 	void remove_fan_from_page(string fan_name, string page_name);
 	bool IsUserExist(string u_name);
 	bool IsFanPageExist(string f_name);
+
 };
 
 #endif 

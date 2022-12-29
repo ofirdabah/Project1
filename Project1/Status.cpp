@@ -5,6 +5,8 @@
 Status::Status(string newStatus)
 {
 	content=newStatus;
+	if (content == "")
+		throw Statusexception();
 	time_str = new char[STRLEN];
 	time_t t = time(NULL);
 	ctime_s(time_str, STRLEN, &t);

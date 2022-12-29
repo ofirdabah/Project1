@@ -20,5 +20,4 @@ int main() {
 	Facebook meta;
 	Helper UX;
 	UX.console(meta);
-
 }

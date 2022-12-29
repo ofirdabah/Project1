@@ -7,6 +7,14 @@
 
 using namespace std;
 
+
+class Statusexception : public exception
+{
+public:
+	virtual const char* what() const override { return "Empty status is invalid!\n"; }
+};
+
+
 class Status
 {
 	char* time_str;

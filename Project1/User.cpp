@@ -3,7 +3,12 @@
 #include "Status.h"
 #include "Fans_page.h"
 
-User::User(const string s, Date& date) : name(s), birthdate(date){}
+User::User(const string s, Date& date) : name(s), birthdate(date)
+{
+	name = s;
+	if (s == "")
+		throw Userexception();
+}
 
 void User::add_status(Status* s)
 {
