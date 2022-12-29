@@ -217,14 +217,10 @@ void Facebook::print_all_users_and_pages()
 
 void Facebook::print_all_followers(string name, int num)
 {
-	if (!IsUserExist(name))
-		throw UserNotExistexception(name);
-
-	if (!IsFanPageExist(name))
-		throw FanPageNotExistexception(name);
-
 	if (num == 1)
 	{
+		if (!IsUserExist(name))
+			throw UserNotExistexception(name);
 		for (auto it = all_users.begin(); it != all_users.end(); ++it)
 		{
 			if ((*it)->getName() == name)
@@ -233,6 +229,8 @@ void Facebook::print_all_followers(string name, int num)
 	}
 	else
 	{
+		if (!IsFanPageExist(name))
+			throw FanPageNotExistexception(name);
 		for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
 		{
 			if ((*it)->get_page_name() == name)
