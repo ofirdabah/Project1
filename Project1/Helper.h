@@ -69,7 +69,7 @@ public:
 //		return message.c_str();
 //	}
 //};
-//
+
 //int string_to_int(const std::string& s)
 //{
 //	try

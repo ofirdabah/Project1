@@ -16,8 +16,8 @@ Facebook::~Facebook() {
 void Facebook::add_user(const string s, int d, int m, int y)
 {
 	Date birth = Date(d, m, y);
-	if (IsUserExist(s));
-		/*throw();*/
+	if (IsUserExist(s))
+		throw UserExistexception();
 	User* new_user = new User(s, birth);
 	all_users.push_back(new_user);
 
@@ -25,12 +25,16 @@ void Facebook::add_user(const string s, int d, int m, int y)
 
 void Facebook::add_fanPage(const string page_name)
 {
+	if (IsFanPageExist(page_name))
+		throw FanPageExistexception();
 	Fans_page* new_fanpage = new Fans_page(page_name);
 	all_fans_page.push_back(new_fanpage);
 }
 
 void Facebook::add_status_to_user(const string name, const string status)
 {
+	if (!IsUserExist(name))
+		throw UserNotExistexception(name);
 	Status* new_status = new Status(status);
 	for (auto it=all_users.begin(); it != all_users.end(); ++it)
 	{
@@ -41,6 +45,8 @@ void Facebook::add_status_to_user(const string name, const string status)
 
 void Facebook::add_status_to_fan_page(const string name, const string status)
 {
+	if (!IsFanPageExist(name))
+		throw FanPageNotExistexception(name);
 	Status* new_status = new Status(status);
 	for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
 	{
@@ -53,6 +59,8 @@ void Facebook::show_all_status(string name, int num)
 {
 	if (num == 1)
 	{
+		if (!IsUserExist(name))
+			throw UserNotExistexception(name);
 		for (auto it = all_users.begin(); it != all_users.end(); ++it)
 		{
 			if ((*it)->getName() == name)
@@ -61,6 +69,8 @@ void Facebook::show_all_status(string name, int num)
 	}
 	else
 	{
+		if (!IsFanPageExist(name))
+			throw FanPageNotExistexception(name);
 		for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
 		{
 			if ((*it)->get_page_name() == name)
@@ -70,6 +80,9 @@ void Facebook::show_all_status(string name, int num)
 }
 
 void Facebook::show_all_friends_status(string name) {
+	
+	if (!IsUserExist(name))
+		throw UserNotExistexception(name);
 
 	for (auto it = all_users.begin(); it != all_users.end(); ++it)
 	{
@@ -82,6 +95,12 @@ void Facebook::show_all_friends_status(string name) {
 
 void Facebook::create_friendship(string name, string name2)
 {
+	if (!IsUserExist(name))
+		throw UserNotExistexception(name);
+
+	if (!IsUserExist(name2))
+		throw UserNotExistexception(name2);
+
 	auto it = all_users.begin();
 	auto it2 = all_users.begin();
 
@@ -105,6 +124,12 @@ void Facebook::create_friendship(string name, string name2)
 
 void Facebook::cancel_friendsship(string name, string name2)
 {
+	if (!IsUserExist(name))
+		throw UserNotExistexception(name);
+
+	if (!IsUserExist(name2))
+		throw UserNotExistexception(name2);
+
 	auto it = all_users.begin();
 	auto it2 = all_users.begin();
 
@@ -125,6 +150,12 @@ void Facebook::cancel_friendsship(string name, string name2)
 
 void Facebook::add_fan_to_fanPage(string name, string name2)
 {
+	if (!IsUserExist(name2))
+		throw UserNotExistexception(name2);
+
+	if (!IsFanPageExist(name))
+		throw FanPageNotExistexception(name);
+
 	auto it = all_users.begin();
 	auto it2 = all_fans_page.begin();
 
@@ -146,6 +177,12 @@ void Facebook::add_fan_to_fanPage(string name, string name2)
 
 void Facebook::remove_fan_from_page(string fan_name, string page_name)
 {
+	if (!IsUserExist(fan_name))
+		throw UserNotExistexception(fan_name);
+
+	if (!IsFanPageExist(page_name))
+		throw FanPageNotExistexception(page_name);
+
 	auto it = all_users.begin();
 	auto it2 = all_fans_page.begin();
 
@@ -180,6 +217,11 @@ void Facebook::print_all_users_and_pages()
 
 void Facebook::print_all_followers(string name, int num)
 {
+	if (!IsUserExist(fan_name))
+		throw UserNotExistexception(fan_name);
+
+	if (!IsFanPageExist(page_name))
+		throw FanPageNotExistexception(page_name);
 
 	if (num == 1)
 	{

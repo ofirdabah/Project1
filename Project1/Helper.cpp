@@ -53,7 +53,7 @@ void Helper::console(Facebook& meta)
 		{
 			manage(num, meta);
 		}
-		catch (Datexception& e) {
+		catch (exception& e) {
 			cout << e.what() << endl;
 		}
 	} while (num != NUM_OF_FUNCTION);
