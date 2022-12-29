@@ -8,6 +8,7 @@ bool is_number(const std::string& s)
 	while (it != s.end() && std::isdigit(*it)) ++it;
 	return !s.empty() && it == s.end();
 }
+
 void Helper::console(Facebook& meta)
 {
 	
