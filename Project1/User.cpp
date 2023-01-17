@@ -20,14 +20,14 @@ User::~User() {
 		delete* i;
 }
 
-void User::print_all_status()
+void User::print_all_status() const
 {
 	cout << "All the status of: " << name << endl;
 	for (auto it = Status_arry.begin(); it != Status_arry.end(); ++it)
 		(*it)->printStatus();
 }
 
-void User::show_friends_status()
+void User::show_friends_status()const
 {
 	for (auto i = friends_arr.begin(); i != friends_arr.end(); ++i) {
 			cout<<"\n"<<(*i)->getName() << "'s status:\n";
@@ -46,7 +46,7 @@ void User::create_friendship(User* newfriend)
 	friends_arr.push_back(newfriend);
 }
 
-void User::print_all_of_my_folowers()
+void User::print_all_of_my_folowers()const
 {
 	for (auto it = friends_arr.begin(); it != friends_arr.end(); ++it)
 		cout<<(*it)->getName()<<"\n";
@@ -96,7 +96,7 @@ void User::remove_fan_page(string page_name)
 		throw UserNotFollowexception();
 }
 
-void User::show_fanpage_followed_by_user()
+void User::show_fanpage_followed_by_user()const
 {
 	cout << "All fan pages followed by " << getName();
 	for (auto it = fan_pages_arr.begin(); it != fan_pages_arr.end(); ++it)

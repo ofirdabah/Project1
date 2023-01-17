@@ -5,9 +5,8 @@
 class Helperexception : public exception
 {
 public:
-	virtual const char* what() const override { return "Number invalid! only 1-12\n"; }
+	virtual const char* what() const override { return "Number invalid!\n"; }
 };
-
 
 class Helper
 {
@@ -38,15 +37,9 @@ public:
 		} while (x != EOF && x != '\n');
 	}
 
-	bool checkIfOneOrZero(int num);
 	bool is_number(const string& s);
 	int ValidNumber(const string number);
 	
 };
-
-
-
-
-
 
 #endif 

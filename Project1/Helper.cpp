@@ -8,27 +8,27 @@ void Helper::console(Facebook& meta)
 	try
 	{
 		meta.add_user("ofir", 24, 5, 1999);
-		meta.add_user("itay", 3, 2, 1996);
-		meta.add_user("ori", 22, 5, 1994);
-		meta.add_fanPage("Spain");
-		meta.add_fanPage("Brazil");
 		meta.add_fanPage("Israel");
-		meta.create_friendship("ofir", "itay");
-		meta.create_friendship("ofir", "ori");
-		meta.add_fan_to_fanPage("Israel", "ori");
-		meta.add_fan_to_fanPage("Brazil", "ori");
-		meta.add_status_to_user("ofir", "hello world");
-		meta.add_status_to_user("ofir", "hello world im football fan");
-		meta.add_status_to_user("itay", "hello");
-		meta.add_status_to_user("itay", "hello bye");
-		meta.add_status_to_user("ori", "i love kayle jenner");
-		meta.add_status_to_user("ori", "i love madona");
-		meta.add_status_to_fan_page("Brazil", "i love madona");
-		meta.add_status_to_fan_page("Brazil", "i love mardona,but pela more");
-		meta.add_status_to_fan_page("Israel", "we love 1970 ");
-		meta.add_status_to_fan_page("Israel", "we score");
-		meta.add_status_to_fan_page("Spain", "we love omer adam and sangria");
-		meta.add_status_to_fan_page("Spain", "we will win");
+		/*	meta.add_user("itay", 3, 2, 1996);
+			meta.add_user("ori", 22, 5, 1994);
+			meta.add_fanPage("Spain");
+			meta.add_fanPage("Brazil");
+			meta.create_friendship("ofir", "itay");
+			meta.create_friendship("ofir", "ori");
+			meta.add_fan_to_fanPage("Israel", "ori");
+			meta.add_fan_to_fanPage("Brazil", "ori");
+			meta.add_status_to_user("ofir", "hello world");
+			meta.add_status_to_user("ofir", "hello world im football fan");
+			meta.add_status_to_user("itay", "hello");
+			meta.add_status_to_user("itay", "hello bye");
+			meta.add_status_to_user("ori", "i love kayle jenner");
+			meta.add_status_to_user("ori", "i love madona");
+			meta.add_status_to_fan_page("Brazil", "i love madona");
+			meta.add_status_to_fan_page("Brazil", "i love mardona,but pela more");
+			meta.add_status_to_fan_page("Israel", "we love 1970 ");
+			meta.add_status_to_fan_page("Israel", "we score");
+			meta.add_status_to_fan_page("Spain", "we love omer adam and sangria");
+			meta.add_status_to_fan_page("Spain", "we will win");*/
 	}
 	catch (exception& e)
 	{
@@ -38,8 +38,8 @@ void Helper::console(Facebook& meta)
 	{
 		cout << "Eror,try again" << endl;
 	}
-		int num;
-		string str;
+	int num;
+	string str;
 	do
 	{
 		try
@@ -50,7 +50,7 @@ void Helper::console(Facebook& meta)
 			num = ValidNumber(str);
 			manage(num, meta);
 		}
-		catch (exception& e) 
+		catch (exception& e)
 		{
 			cout << e.what() << endl;
 		}
@@ -79,13 +79,13 @@ void Helper::print_main_page()
 
 void Helper::manage(int num, Facebook& meta)
 {
-	int d, m, y, number;
-	string name, status,name2, name_of_fan_page; 
+	int d, m, y, number, nums;
+	string name, status, name2, name_of_fan_page, fileName;
 
 	switch (num)
 	{
 	case (int)USER_OPTION::ADD_USER:
-		
+
 		cout << "Welcome new user please sign up:\n";
 		cout << "Please enter name:" << endl;
 		cleanBuffer();
@@ -101,28 +101,39 @@ void Helper::manage(int num, Facebook& meta)
 		meta.add_fanPage(name_of_fan_page);
 		break;
 	case (int)USER_OPTION::ADD_STATUS:
-		do
-		{
-			cout << "Add ststus for friend press- (1) / Add status for fan page press- (2)." << endl;
-			cin >> number;
-		} while ((checkIfOneOrZero(number) == false));
 
+		cout << "Add ststus for friend press- (1) / Add status for fan page press- (2)." << endl;
+		cin >> number;
+		if (number != 1 && number != 2)
+			throw Helperexception();
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
 		getline(cin, name);
+		cout << "Please enter which status you want to add (text(1),photo(2),video(3)):" << endl;
+		cin >> nums;
+		if (nums != 1 && nums != 2 && nums != 3)
+			throw Helperexception();
+		if (nums != 1)
+		{
+			cout << "Please enter the name of the file:" << endl;
+			cleanBuffer();
+			getline(cin, fileName);
+		}
 		cout << "Please enter the status:" << endl;
 		getline(cin, status);
+
 		if (number == 1)
-			meta.add_status_to_user(name, status);
+			meta.add_status_to_user(name, status, fileName, nums);
 		else
-			meta.add_status_to_fan_page(name, status);
+			meta.add_status_to_fan_page(name, status, fileName, nums);
+
 		break;
 	case (int)USER_OPTION::SHOW_ALL_STATUS:
-		do
-		{
-			cout << "Show all status of friend press - (1) / Show all status of fan page press- (2)." << endl;
-			cin >> number;
-		} while ((checkIfOneOrZero(number) == false));
+
+		cout << "Show all status of friend press - (1) / Show all status of fan page press- (2)." << endl;
+		cin >> number;
+		if (number != 1 && number != 2)
+			throw Helperexception();
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
 		getline(cin, name);
@@ -171,11 +182,10 @@ void Helper::manage(int num, Facebook& meta)
 		break;
 
 	case (int)USER_OPTION::SHOW_ALL_FOLLOWERS:
-		do
-		{
-			cout << "Show all followers of user - (1) / Show all followres of fan page - (2)." << endl;
-			cin >> number;
-		} while ((checkIfOneOrZero(number) == false));
+		cout << "Show all followers of user - (1) / Show all followres of fan page - (2)." << endl;
+		cin >> number;
+		if (number != 1 && number != 2)
+			throw Helperexception();
 		cout << "Please enter the name:" << endl;
 		cleanBuffer();
 		getline(cin, name);
@@ -186,14 +196,14 @@ void Helper::manage(int num, Facebook& meta)
 	}
 }
 
-bool Helper:: is_number(const string& s)
+bool Helper::is_number(const string& s)
 {
 	std::string::const_iterator it = s.begin();
 	while (it != s.end() && isdigit(*it)) ++it;
 	return !s.empty() && it == s.end();
 }
 
-int Helper:: ValidNumber(const string number)
+int Helper::ValidNumber(const string number)
 {
 	int num;
 	if (is_number(number))
@@ -203,15 +213,6 @@ int Helper:: ValidNumber(const string number)
 			return num;
 	}
 	throw Helperexception();
-
-}
-
-bool Helper::checkIfOneOrZero(int num)
-{
-	if (num != 1 && num != 2)
-		return false;
-
-	return true;
 }
 
 

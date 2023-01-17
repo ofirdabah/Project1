@@ -19,26 +19,21 @@ class UserNamexception : public Userexception
 public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
-
-
 class UserFriendexception : public Userexception
 {
 public:
 	virtual const char* what() const override { return "Already friends!\n"; }
 };
-
 class UserNotFriendexception : public Userexception
 {
 public:
 	virtual const char* what() const override { return "You are not friends!\n"; }
 };
-
 class UserALreadyFollowexception : public Userexception
 {
 public:
 	virtual const char* what() const override { return "You are already follow this page!\n"; }
 };
-
 class UserNotFollowexception : public Userexception
 {
 public:
@@ -65,17 +60,17 @@ public:
 	Date getdate() const { return birthdate; }
 
 	vector<Fans_page*> get_fan_pages_arr() const { return fan_pages_arr; }
-	void show_friends_status();
+	void show_friends_status() const;
 	void create_friendship(User* newfriend);
 	void cancel_friendship(string friend_not_for_long);
 	void add_status(Status* s);
-	void print_all_status();
-	void print_all_of_my_folowers();
+	void print_all_status() const;
+	void print_all_of_my_folowers() const;
 	User(const string s, Date& date);
 	~User();
 	void add_fan_page(Fans_page* newpage);
 	void  remove_fan_page(string page_name);
-	void show_fanpage_followed_by_user();
+	void show_fanpage_followed_by_user()const;
 
 	User& operator+=(User& other);
 	User& operator+=(Fans_page& other);

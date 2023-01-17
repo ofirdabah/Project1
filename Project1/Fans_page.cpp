@@ -11,13 +11,13 @@ Fans_page::Fans_page(string name) : page_name(name) {
 
 void Fans_page::add_status(Status* s) {status_of_page.push_back(s);}
 
-void Fans_page::print_all_status()
+void Fans_page::print_all_status()const 
 {
 	for (auto it = status_of_page.begin(); it != status_of_page.end(); ++it)
 		(*it)->printStatus();
 }
 
-void Fans_page::print_all_my_folowers()
+void Fans_page::print_all_my_folowers()const
 {
 	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)
 		cout<<(*it)->getName()<<"\n";
@@ -39,7 +39,7 @@ Fans_page::~Fans_page() {
 		delete* i;
 }
 
-void Fans_page::remove_fan(string fan_name)
+void Fans_page::remove_fan(const string& fan_name)
 {
 	bool flag = false;
 	for (auto it = fans_arr.begin(); it != fans_arr.end(); ++it)

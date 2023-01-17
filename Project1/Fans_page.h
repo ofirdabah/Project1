@@ -11,19 +11,16 @@ class Fans_pagexception : public exception
 public:
 	virtual const char* what() const override { return "Data invalid!\n"; }
 };
-
 class Emptynamexception : public Fans_pagexception
 {
 public:
 	virtual const char* what() const override { return "Empty name is invalid!\n"; }
 };
-
 class UserNoExistexception : public Fans_pagexception
 {
 public:
 	virtual const char* what() const override { return "User not exist!\n"; }
 };
-
 class UserAlreadyfollowexception : public Fans_pagexception
 {
 public:
@@ -47,12 +44,12 @@ public:
 	Fans_page(string name);
 	~Fans_page();
 	void add_status(Status* s);
-	void print_all_status();
-	void print_all_my_folowers();
+	void print_all_status()const;
+	void print_all_my_folowers()const;
 	void add_fan( User* newfan);
-	void remove_fan(string fan_name);
-	vector<Status*> getStatus_of_page() { return status_of_page; }
-    vector<Status*> getStatus_of_page() const  { return status_of_page; }  
+	void remove_fan(const string& fan_name);
+	const vector<Status*>& getStatus_of_page() { return status_of_page; }
+    const vector<Status*>& getStatus_of_page() const  { return status_of_page; }  
 	Fans_page& operator+=(User& other);
 	bool operator>(const Fans_page& other) const;
 	bool operator>(const User& other) const;

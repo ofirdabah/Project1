@@ -13,7 +13,7 @@ Status::Status(string newStatus)
 
 }
 
-void Status::printStatus()
+ void  Status::printStatus () 
 {
 	cout << content << "\n";
 	cout << time_str << "\n";

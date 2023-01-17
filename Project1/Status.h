@@ -15,20 +15,20 @@ public:
 
 class Status
 {
+protected:
 	char* time_str;
 	string content;
 
 public:
 
 	Status(const Status& other) = delete;
-	inline string getstatus() { return content; }
-	void printStatus();
+	virtual void printStatus();
 	
 	Status(string newStatus);
-	~Status();
+	virtual ~Status();
 
-	bool operator==(const Status& other) const;
-	bool operator!=(const Status& other) const;
+	virtual bool operator==(const Status& other) const;
+	virtual bool operator!=(const Status& other) const;
 };
 #endif 
 

@@ -29,11 +29,24 @@ void Facebook::add_fanPage(const string page_name)
 	all_fans_page.push_back(new_fanpage);
 }
 
-void Facebook::add_status_to_user(const string name, const string status)
+void Facebook::add_status_to_user(const string name, const string status , const string fileName, int num)
 {
+	Status* new_status = nullptr;
 	if (!IsUserExist(name))
 		throw UserNotExistexception(name);
-	Status* new_status = new Status(status);
+	switch (num)
+	{
+	case 1:
+	 new_status = new Status(status);
+		break;
+	case 2:
+	 new_status = new StatusPhoto(status, fileName);
+		break;
+	case 3:
+	 new_status = new StatusVideo(status, fileName);
+		break;
+	}
+
 	for (auto it=all_users.begin(); it != all_users.end(); ++it)
 	{
 		if ((*it)->getName() == name)
@@ -41,11 +54,25 @@ void Facebook::add_status_to_user(const string name, const string status)
 	}
 }
 
-void Facebook::add_status_to_fan_page(const string name, const string status)
+void Facebook::add_status_to_fan_page(const string name, const string status, const string fileName, int num)
 {
+	Status* new_status = nullptr;
 	if (!IsFanPageExist(name))
 		throw FanPageNotExistexception(name);
-	Status* new_status = new Status(status);
+
+	switch (num)
+	{
+	case 1:
+		new_status = new Status(status);
+		break;
+	case 2:
+		new_status = new StatusPhoto(status, fileName);
+		break;
+	case 3:
+		new_status = new StatusVideo(status, fileName);
+		break;
+	}
+	 
 	for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
 	{
 		if ((*it)->get_page_name() == name)
@@ -53,7 +80,7 @@ void Facebook::add_status_to_fan_page(const string name, const string status)
 	}
 }
 
-void Facebook::show_all_status(string name, int num)
+void Facebook::show_all_status(string name, int num)const 
 {
 	if (num == 1)
 	{
@@ -77,7 +104,7 @@ void Facebook::show_all_status(string name, int num)
 	}
 }
 
-void Facebook::show_all_friends_status(string name) {
+void Facebook::show_all_friends_status(string name)const {
 	
 	if (!IsUserExist(name))
 		throw UserNotExistexception(name);
@@ -206,7 +233,7 @@ void Facebook::remove_fan_from_page(string fan_name, string page_name)
 	}
 }
 
-void Facebook::print_all_users_and_pages()
+void Facebook::print_all_users_and_pages()const
 {
 	cout << "Users:" << endl;
 	for (auto it = all_users.begin(); it != all_users.end(); ++it)
@@ -217,7 +244,7 @@ void Facebook::print_all_users_and_pages()
 		cout << (*it)->get_page_name() << endl;
 }
 
-void Facebook::print_all_followers(string name, int num)
+void Facebook::print_all_followers(string name, int num)const
 {
 	if (num == 1)
 	{
@@ -242,7 +269,7 @@ void Facebook::print_all_followers(string name, int num)
 	}
 }
 
-bool Facebook::IsUserExist(string u_name)
+bool Facebook::IsUserExist(string u_name)const
 {
 	for (auto it = all_users.begin(); it != all_users.end(); ++it)
 	{
@@ -252,7 +279,7 @@ bool Facebook::IsUserExist(string u_name)
 	return false;
 }
 
-bool Facebook::IsFanPageExist(string f_name)
+bool Facebook::IsFanPageExist(string f_name)const
 {
 	for (auto it = all_fans_page.begin(); it != all_fans_page.end(); ++it)
 	{
