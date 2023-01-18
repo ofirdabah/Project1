@@ -16,6 +16,8 @@ public:
 	virtual void printStatus() override;
 	virtual ~StatusVideo() override {}
 	inline const string getfileName() const { return fileName; }
+	string  earsemp4() { return fileName.erase(fileName.length() - 4); }
+
 };
 
 #endif

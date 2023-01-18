@@ -3,6 +3,7 @@
 #include <cstring>
 #include <fstream>
 #include <istream>
+#include <string.h>
 
 Facebook::Facebook() 
 {
@@ -164,12 +165,12 @@ Facebook::~Facebook() {
 			if (photo)
 			{
 				outFile << 2 << endl;
-				outFile << photo->getfileName().length() - 4 << endl;
+				outFile << photo->earsejpg() << endl;
 			}
 			else if (video)
 			{
 				outFile << 3 << endl;
-				outFile << video->getfileName().length()-4 << endl;
+				outFile << video->earsemp4()<< endl;
 			}
 			else
 			{
@@ -206,11 +207,11 @@ Facebook::~Facebook() {
 			StatusVideo* video = dynamic_cast<StatusVideo*>(*j);
 			if (photo)
 			{
-				outFile << photo->getfileName() << endl;
+				outFile << photo->earsejpg() << endl;
 			}
 			if (video)
 			{
-				outFile << video->getfileName() << endl;
+				outFile << video->earsemp4() << endl;
 			}
 		}
 

@@ -15,6 +15,7 @@ public:
 	virtual void printStatus() override;
 	virtual ~StatusPhoto() override{}
 	inline const string getfileName() const { return fileName; }
+	string  earsejpg() {return fileName.erase(fileName.length() - 4);}
 
 
 	//virtual bool operator==(const StatusPhoto& other) const override;
