@@ -88,6 +88,51 @@ Facebook::Facebook()
 			all_users[j]->add_fan_page(*it);
 		}
 	}
+	for (int j = 0; j < numOfFanPage; j++)
+	{
+		inFile >> numOfStatus;
+		inFile.get();// /0
+
+		for (int i = 0; i < numOfStatus; i++)
+		{
+			getline(inFile, content);
+			getline(inFile, time);
+
+			inFile >> type;// type of status
+			if (type == 2)
+			{
+				inFile >> fileName;
+				sta = new StatusPhoto(content, time, fileName);
+			}
+			else if (type == 3)
+			{
+				inFile >> fileName;
+				sta = new StatusVideo(content, time, fileName);
+			}
+			else
+			{
+				sta = new Status(content, time);
+			}
+
+			all_fans_page[j]->add_status(sta);
+		}
+
+		// followers
+		inFile >> numOfEntity;
+		inFile.get();// /0
+		for (int i = 0; i < numOfEntity; i++)
+		{
+			getline(inFile, name);
+			auto it = all_users.begin();
+			for (; it != all_users.end(); ++it)
+			{
+				if ((*it)->getName() == name)
+					break;
+			}
+
+			all_fans_page[j]->add_fan(*it);
+		}
+	}
 }
 
 Facebook::~Facebook() {
