@@ -10,39 +10,33 @@ Facebook::Facebook()
 	ifstream inFile("meta.txt");
 	int numOfUsers, numOfFanPage, numOfStatus, day, month, year, type;
 	string name, content, time,fileName;
-	Status* sta;
+	Status* sta, *nameofpage;
 	char* charArr = new char[NUMOFDIGIT];
 
 	inFile >> numOfUsers;
 	for (int i = 0; i < numOfUsers; i++)
 	{
-		inFile >> name;
+		inFile.get();// /0
+		getline(inFile, name);
 		inFile >> day >> month >> year;
 		add_user(name, day, month, year);
 	}
 
 	inFile >> numOfFanPage;
+	inFile.get();// /0
 	for (int i = 0; i < numOfFanPage; i++)
 	{
-		//inFile >> name;
-		inFile.get();// /0
 		getline(inFile, name);
 		add_fanPage(name);
 	}
 	for (int j = 0; j < numOfUsers; j++)
 	{
 		inFile >> numOfStatus;
-
+		inFile.get();// /0
 		for (int i = 0; i < numOfStatus; i++)
 		{
-			
-			inFile.get();// /0
 			getline( inFile, content);
 			getline(inFile, time);
-			//inFile.getline(charArr, NUMOFDIGIT);//content
-			//content = charArr;
-			//inFile.getline(charArr, NUMOFDIGIT);//time
-			//time = charArr;
 
 			inFile >> type;// type of status
 			if (type == 2)
