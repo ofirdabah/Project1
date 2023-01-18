@@ -10,7 +10,7 @@ Facebook::Facebook()
 	ifstream inFile("meta.txt");
 	int numOfUsers, numOfFanPage, numOfStatus, day, month, year, type;
 	string name, content, time,fileName;
-	Status* sta, *nameofpage;
+	Status* sta;
 	char* charArr = new char[NUMOFDIGIT];
 
 	inFile >> numOfUsers;
