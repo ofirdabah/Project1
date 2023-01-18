@@ -119,12 +119,12 @@ Facebook::~Facebook() {
 			if (photo)
 			{
 				outFile << 2 << endl;
-				outFile << photo->getfileName() << endl;
+				outFile << photo->getfileName().length() - 4 << endl;
 			}
 			else if (video)
 			{
 				outFile << 3 << endl;
-				outFile << video->getfileName() << endl;
+				outFile << video->getfileName().length()-4 << endl;
 			}
 			else
 			{
