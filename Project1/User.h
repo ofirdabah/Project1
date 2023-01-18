@@ -54,12 +54,12 @@ public:
 
 	User(const User& other) = delete;
 
-	vector<Status*> get_status_arry() { return Status_arry; }
-	vector<User*> get_friends_arry() { return friends_arr; };
+	const vector<Status*>& get_status_arry() { return Status_arry; }
+	const vector<User*>& get_friends_arry() { return friends_arr; };
 	const string getName() const { return name; }
 	Date getdate() const { return birthdate; }
 
-	vector<Fans_page*> get_fan_pages_arr() const { return fan_pages_arr; }
+	const vector<Fans_page*>& get_fan_pages_arr() const { return fan_pages_arr; }
 	void show_friends_status() const;
 	void create_friendship(User* newfriend);
 	void cancel_friendship(string friend_not_for_long);

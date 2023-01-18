@@ -7,8 +7,8 @@ void Helper::console(Facebook& meta)
 {
 	try
 	{
-		meta.add_user("ofir", 24, 5, 1999);
-		meta.add_fanPage("Israel");
+		//meta.add_user("ofir", 24, 5, 1999);
+		//meta.add_fanPage("Israel");
 		/*	meta.add_user("itay", 3, 2, 1996);
 			meta.add_user("ori", 22, 5, 1994);
 			meta.add_fanPage("Spain");
@@ -113,10 +113,10 @@ void Helper::manage(int num, Facebook& meta)
 		cin >> nums;
 		if (nums != 1 && nums != 2 && nums != 3)
 			throw Helperexception();
+		cleanBuffer();
 		if (nums != 1)
 		{
 			cout << "Please enter the name of the file:" << endl;
-			cleanBuffer();
 			getline(cin, fileName);
 		}
 		cout << "Please enter the status:" << endl;

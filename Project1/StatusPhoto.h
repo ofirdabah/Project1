@@ -11,8 +11,11 @@ private:
 public:
 
 	StatusPhoto(string content, string fileName) :Status(content), fileName(fileName) {}
+	StatusPhoto(string content,string fTime ,string fileName) :Status(content,fTime), fileName(fileName) {}
 	virtual void printStatus() override;
 	virtual ~StatusPhoto() override{}
+	inline const string getfileName() const { return fileName; }
+
 
 	//virtual bool operator==(const StatusPhoto& other) const override;
 	//virtual bool operator!=(const StatusPhoto& other) const override;

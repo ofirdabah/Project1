@@ -17,6 +17,7 @@ class UserExistexception : public Facebookexception
 public:
 	virtual const char* what() const override { return "User name is already exist,Try again please!\n"; }
 };
+
 class FanPageExistexception : public Facebookexception
 {
 public:
@@ -66,6 +67,7 @@ public:
 
 	Facebook();
 	~Facebook();
+
 
 	void add_user(string s, int d, int m, int y);
 	void add_fanPage(const string page_name);

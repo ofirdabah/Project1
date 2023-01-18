@@ -2,6 +2,7 @@
 #define DATE_H
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -48,6 +49,12 @@ public:
 	void print() { cout << day << "/" << month << "/" << year; }
 	Date();
 	Date(int day, int month, int year);
+
+
+	friend ostream& operator<<(ostream& os, const Date& d)
+	{
+		return os << d.day << " " << d.month << " " << d.year;
+	}
 
 };
 

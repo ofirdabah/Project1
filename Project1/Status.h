@@ -16,7 +16,7 @@ public:
 class Status
 {
 protected:
-	char* time_str;
+	string timeStr;
 	string content;
 
 public:
@@ -25,10 +25,16 @@ public:
 	virtual void printStatus();
 	
 	Status(string newStatus);
+	Status(string newStatus, string time);
 	virtual ~Status();
+
+	inline const string GetTime() const { return timeStr; }
+	inline const string GetContent() const { return content; }
 
 	virtual bool operator==(const Status& other) const;
 	virtual bool operator!=(const Status& other) const;
+
+	 friend ostream& operator<<(ostream& os, const Status& d);
 };
 #endif 
 

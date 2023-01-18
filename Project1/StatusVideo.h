@@ -11,9 +11,11 @@ private:
 public:
 
 	StatusVideo(string content, string fileName) :Status(content), fileName(fileName) {}
+	StatusVideo(string content, string fTime, string fileName) :Status(content, fTime), fileName(fileName) {}
+
 	virtual void printStatus() override;
 	virtual ~StatusVideo() override {}
-
+	inline const string getfileName() const { return fileName; }
 };
 
 #endif
