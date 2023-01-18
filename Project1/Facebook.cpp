@@ -10,7 +10,6 @@ Facebook::Facebook()
 	int numOfUsers, numOfFanPage, numOfStatus, day, month, year, type;
 	string name, content, time,fileName;
 	Status* sta;
-	char* charArr = new char[NUMOFDIGIT];
 
 	inFile >> numOfUsers;
 	for (int i = 0; i < numOfUsers; i++)
