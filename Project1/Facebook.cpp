@@ -7,7 +7,7 @@
 Facebook::Facebook() 
 {
 	ifstream inFile("meta.txt");
-	int numOfUsers, numOfFanPage, numOfStatus, day, month, year, type;
+	int numOfUsers, numOfFanPage, numOfStatus, numOfEntity, day, month, year, type;
 	string name, content, time,fileName;
 	Status* sta;
 
@@ -27,6 +27,7 @@ Facebook::Facebook()
 		getline(inFile, name);
 		add_fanPage(name);
 	}
+
 	for (int j = 0; j < numOfUsers; j++)
 	{
 		inFile >> numOfStatus;
@@ -53,6 +54,38 @@ Facebook::Facebook()
 			}
 			
 			all_users[j]->add_status(sta);
+		}
+
+		// friends
+		inFile >> numOfEntity;
+		inFile.get();// /0
+		for (int i = 0; i < numOfEntity; i++)
+		{
+			getline(inFile, name);
+			auto it = all_users.begin();
+			for (; it != all_users.end(); ++it)
+			{
+				if ((*it)->getName() == name)
+					break;
+			}
+			all_users[j]->create_friendship(*it);
+		}
+
+		// fan pages
+
+		inFile >> numOfEntity;
+		inFile.get();// /0
+		for (int i = 0; i < numOfEntity; i++)
+		{
+			getline(inFile, name);
+
+			auto it = all_fans_page.begin();
+			for (; it != all_fans_page.end(); ++it)
+			{
+				if ((*it)->get_page_name() == name)
+					break;
+			}
+			all_users[j]->add_fan_page(*it);
 		}
 	}
 }
